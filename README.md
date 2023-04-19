@@ -1,4 +1,4 @@
-![logo]()
+
 Tumblr Themes
 =============
 
