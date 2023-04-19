@@ -1,0 +1,982 @@
+<html>
+    <head>
+        <title>{Title}</title>
+     
+      <script type="text/javascript" 
+    src="https://www.google.com/jsapi"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js" language="javascript" type="text/javascript"></script>
+
+
+    
+    
+<script type="text/javascript">
+  google.load("jquery", "1.3");
+  google.setOnLoadCallback(function() {
+    jQuery(function($) {
+      // do some stuff here, eg load your tweets, ...
+    });
+  });
+</script>  
+        <script>
+  $(function() {
+    var url = '/rss';
+    var $list = $('#recent-posts');
+    $.ajax({
+        url: url,
+        type: 'GET',
+        dataType: 'xml',
+        success: function(data) {                
+            var $items = $(data).find('item');
+            $items.each( function() {
+                var $item = $(this);
+                var link = $item.children('link').text();
+                var title = $item.children('title').text();
+                if (link && title) {
+                    $list.append($('<li><a href="' + link + '">' + title + '</a></li>'));
+                }
+            });
+          }
+      });
+  });
+</script>
+
+<link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
+        <link rel="shortcut icon" href="{Favicon}">
+        <link rel="alternate" type="application/rss+xml" href="{RSS}">
+        {block:Description}
+            <meta name="description" content="{MetaDescription}" />
+        {/block:Description}
+        
+        <meta name="text:Likes" content="This is the second description. Say whatever you want." />
+
+        
+        <meta https-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="image:portrait" content=""/>
+        
+        <meta name="color:Background color" content="#fffff"/>
+        <meta name="image:Background image" content=""/>
+        <meta name="color:Midori color" content="#fffff"/>
+        <meta name="color:Title color" content=""/>
+        <meta name="color:Date color" content=""/>
+        <meta name="color:Text color" content=""/>
+        <meta name="font:Font" content=""/>
+        <meta name="color:Note color" content=""/>
+        <meta name="color:Note title" content=""/>
+        <meta name="color:Note text color" content =""/>
+        <meta name="image:Note title background" content=""/>
+        
+        <meta name="color:Card color" content="#fffff"/>
+
+        
+        <meta name="color:Page color" content=""/>
+        <meta name="color:Scrollbar color" content=""/>
+        <meta name="color:Line under date" content=""/>
+        <meta name="color:Background color of Date" content=""/>
+        <meta name="color:Quote box color" content=""/>
+
+
+        <meta name="text:Custom Link One" content=""/>
+        <meta name="text:Custom Link One URL" content=""/>
+        <meta name="color:Tab One text color" content=""/>
+        <meta name="color:Tab One background color" content=""/>
+        <meta name="image:Tab One background image" content=""/>
+
+        <meta name="text:Custom Link Two" content=""/>
+        <meta name="text:Custom Link Two URL" content=""/>
+        <meta name="color:Tab Two text color" content=""/>
+        <meta name="color:Tab Two background color" content=""/>
+        <meta name="image:Tab Two background image" content=""/>
+        
+        <meta name="text:Custom Link Three" content=""/>
+        <meta name="text:Custom Link Three URL" content=""/>
+        <meta name="color:Tab Three text color" content=""/>
+        <meta name="color:Tab Three background color" content=""/>
+        <meta name="image:Tab Three background image" content=""/>
+        
+        <meta name="text:Custom Link Four" content=""/>
+        <meta name="text:Custom Link Four URL" content=""/>
+        <meta name="color:Tab Four text color" content=""/>
+        <meta name="color:Tab Four background color" content=""/>
+        <meta name="image:Tab Four background image" content=""/>
+        
+        <meta name="text:Custom Link Five" content=""/>
+        <meta name="text:Custom Link Five URL" content=""/>
+        <meta name="color:Tab Five text color" content=""/>
+        <meta name="color:Tab Five background color" content=""/>
+        <meta name="image:Tab Five background image" content=""/>
+        
+        <meta name="text:Custom Link Six" content=""/>
+        <meta name="text:Custom Link Six URL" content=""/>
+        <meta name="color:Tab Six text color" content=""/>
+        <meta name="color:Tab Six background color" content=""/>
+        <meta name="image:Tab Six background image" content=""/>
+<!--- CSS Styles --->
+
+<style type="text/css">
+   
+  body {
+      background-color: {color:Background color};
+      background-image: url({image:Background image});
+     font-family: {font:Font};
+     font-size: 8pt;
+      color: {color:Text Color};
+  }
+
+  
+a:link, a:active, a:visited{
+text-decoration: none;
+position:relative;
+z-index:100;
+}
+
+h1 {
+    font-size:8pt;
+    text-align: right;
+        color: {color:Title color};
+}
+    ol {
+        list-style-type:none}
+        
+
+
+
+    
+#midori{ 
+    background-image: url('https://3.bp.blogspot.com/-TUpoEGQBdKU/VeX-J4Ifp3I/AAAAAAAAAw0/xXLHeWqYAc0/s1600/final.jpg'); 
+    border-radius: 20px;
+    box-shadow: 0px 3px  5px -1px #000000, inset 0px 0px 50px 0px #000000;
+    width: 770px;
+    height: 618px;
+    right: 0;
+    left: 0;
+    top:45px;
+    margin: auto;
+    background-repeat: no-repeat;
+    z-index: 1;
+    position: absolute;
+}
+
+#midori_color
+  {     z-index: 2;
+    position: absolute;
+    width: 770px;
+    height: 618px;
+    border-radius: 20px;
+
+}   
+
+.transparent_style{
+    background-color: {color:Midori color};
+    opacity: .80;
+
+}
+
+#container{
+    top: 10px;
+    right: 0;
+    left: 0;
+    margin: 30px auto;
+    z-index: 3;
+    position: absolute;
+    width: 740px;
+    height: 600px;
+    }
+
+    
+#note{ 
+    overflow: hidden;
+    border-radius: 15px;
+    background-color: {color:Note color};
+    margin-left: 195px;
+    margin-top: 25px;
+    margin-bottom:8px;
+    z-index: 6;
+    position: absolute;
+    width: 150px;
+    height: 200px;
+    -ms-transform: rotate(-5eg); /* IE 9 */
+    -webkit-transform: rotate(-5deg); /* Safari */
+    transform: rotate(-5deg);
+
+}
+
+#note_shadow{    
+    border-radius: 15px;
+    box-shadow: -5px 0px  15px -10px #000000, inset 0px 0px 40px -20px #000000;
+    z-index: 4;
+    position: absolute;
+    width: 150px;
+    height: 200px;
+    opacity: .50;
+
+}
+
+#note ul {
+    width: 100px;
+}
+
+ #note    li {
+         font:10px cambria;
+    text-transform:uppercase;
+    letter-spacing:1px;
+        margin-left: -30px;   
+        list-style-type:none;
+        padding-bottom: 5px;
+border-bottom:1px solid {color:Date};
+
+    }
+
+ #note     li a{
+        list-style-type:none;
+        color: {color:Text color};
+    }
+
+#note p 
+    {    
+    color: {color:Note title};
+    width: 141px;
+    height: 30px;
+    border-radius: 15px  15px 1px 1px;
+    font-family: 'Permanent Marker', cursive;
+    margin-top: -1px;
+    padding-top: 12px;
+    padding-left: 10px;
+    background-image: url({image:Note title background});
+}
+
+#pics {
+    font-size:6px;
+    box-shadow: 0px 0px  10px -5px #000000, inset 0px 0px 20px -15px #000000;
+    border-radius: 10px;
+    background-color: #ffffff;
+    margin-left: 6px;
+    margin-top: 18px;
+    z-index: 5;
+    position: absolute;
+    width: 196px;
+    height: 240px;
+    -ms-transform: rotate(2.5deg); /* IE 9 */
+    -webkit-transform: rotate(2.5deg); /* Safari */
+    transform: rotate(2.5deg);
+}
+
+.clip{
+        z-index: 100;
+        position: absolute;
+        width: 52px;
+        top: -4.8%;
+        left: 23.4%;
+}
+    
+#map {
+    box-shadow: 0px 0px  10px -5px #000000, inset 0px 0px 20px -15px #000000;
+
+    margin-left: 70%;
+    margin-top: 5%;
+    z-index: 0;
+    position: absolute;
+    width: 280px;
+    height: 500px;
+    -ms-transform: rotate(3deg); /* IE 9 */
+    -webkit-transform: rotate(3deg); /* Safari */
+    transform: rotate(3deg);
+}
+
+#page{
+
+    left: 367px;
+    top: 14px;
+    position: absolute;
+    width: 325px;
+    height: 600px;
+    box-shadow: 0px 0px 25px -10px #000000; inset 0px 0px 100px 1px #3e2606;
+    background-color: {color:Page color};
+    border-radius: 2px 20px 20px 2px;
+    padding-right: 20px;
+    z-index: 100;
+}
+
+#pocket {
+    left: 90px;
+    top: 240px;
+    position: absolute;
+    width: 270px;
+    height: 155px;
+    box-shadow: 0px 3px 13px -10px #000000; inset 0px 0px 20px 1px #ffffff;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 15px 0px 0px 15px;
+    padding-right: 20px;
+    z-index: 6;  
+    border-style: double ;
+    border-color: rgba(198, 198, 198, 0.6);
+    border-width: 5px; }
+
+#card {
+    left: 99px;
+    top: 249px;
+    position: absolute;
+    width: 235px;
+    height: 145px;
+    box-shadow: 0px 3px 15px -10px #000000; inset 0px 0px 5px 0px #b7b8b5;
+    background-color: {color:Card color};
+    border-radius: 13px;
+    padding-right: 20px;
+    z-index: 5;  
+    border-style: solid ;
+    border-color: rgba(198, 198, 198, 0.9);
+    border-width: 1px; 
+}
+
+.portrait img{
+        overflow-y:hidden;
+overflow-x:hidden;
+    border-radius: 10px;
+    left: 11px;
+    top: 14px;
+    position: absolute;
+    width: 80px;
+    padding:3px;
+    display:inline-block;
+    border: 1px solid #606060;
+
+}
+
+#card_info {
+    overflow:hidden;
+    left: 28.5%;
+    top: 43%;
+    position: absolute;
+    width: 130px;
+    height: 130px;
+        z-index: 100;
+
+}
+
+#navigation {    
+    left: 27%;
+    top: 68%;
+    position: absolute;
+    z-index: 4;
+}
+
+#navigation a{    
+    border-radius: 0px 0px 7px 7px;
+    font:10px cambria;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    line-height:10px;
+    margin-top: 5px;
+    margin-right: 3px;
+    padding: 40px 5px 5px 5px;
+    text-align: right;
+    color: {color:Date color};
+    background-color :{color:Background color of Date};
+    z-index: 100;
+    box-shadow: 0px 0px 12px -5px #000000;
+}
+
+#counter{ 
+    border-radius: 15px;
+    margin-left: 185px;
+    margin-top: 445px;
+    z-index: 6;
+    position: absolute;
+    -ms-transform: rotate(2.5eg); /* IE 9 */
+    -webkit-transform: rotate(2.5deg); /* Safari */
+    transform: rotate(2.5deg);
+
+}
+
+#inspiration {
+        box-shadow: 0px 0px  10px -5px #000000, inset 0px 0px 20px -15px #000000;
+    border-radius: 4px;
+    left: 8px;
+    top: 360px;
+    background-color: #12100e ;
+    z-index: 3; 
+    padding: 0px 4px;
+    position: absolute;
+    -ms-transform: rotate(-2.5eg); /* IE 9 */
+    -webkit-transform: rotate(-2.5deg); /* Safari */
+    transform: rotate(-2.5deg);
+}
+
+
+#inspiration a{
+  
+    padding: 0px 0px;
+    font-family: 'Permanent Marker', cursive;
+    color: #ffffff;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+#inspiration img{
+    width:150px;}
+    
+   #inspiration h3{
+    font-size:8px;
+         line-height:1px;
+   } 
+   
+#theme_credit{
+    font-size:8px;
+    position: absolute;
+    left: 10px;
+    top: 275px;
+    width:70px;
+    text-align: center;
+    opacity: .50;
+}
+
+
+
+.inset-text a{
+    /* Shadows are visible under slightly transparent text color */
+    color: rgba(29, 19, 0, 0.1);
+    text-shadow: 0px 0px 6px rgba(29, 19, 0, 0.3), 0 0 0 #000, 0px 0px 6px rgba(29, 19, 0, 0.5);
+}
+/* Don't show shadows when selecting text */
+::-moz-selection { background: #5af; color: #fff; text-shadow: none; }
+::selection { background: #5af; color: #fff; text-shadow: none; }
+
+#pages_link {
+    width: 595px;
+    height: 0px;
+    left: 60%;
+    top: 53%;
+    position: absolute;
+    transform: rotate(90deg);
+    transform-origin: right, top;
+    -ms-transform: rotate(90deg);
+    -ms-transform-origin:right, top;
+    -webkit-transform: rotate(90deg);
+    -webkit-transform-origin:right, top;
+    color: #ed217c;
+    z-index: 5;
+    font-size: 10px;
+}
+
+    
+.tab {
+        box-shadow: 0px 0px 20px -8px #000000;
+        padding-top: 8px;
+    text-align: center;
+}
+
+#tab_one {
+    background-color: {color:Tab one background color};
+    width: 16%;
+    height: 80px;
+    position: static;
+    color: #ed217c;
+    border-radius: 15px 15px 0px 0px;
+    z-index: 6;
+    display:inline-block;
+}
+
+#tab_one a{
+    letter-spacing:1px;
+    text-transform:uppercase;
+    padding: 10px 10px;
+    color: {color:Tab One text color};
+    border-radius: 15px  15px 1px 1px;
+    font-family: 'Permanent Marker', cursive;
+    position: inherit;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+
+#tab_two {
+    background-color: {color:Tab Two background color};
+    width: 16%;
+    height: 80px;
+    position: static;
+    color: #ed217c;
+    border-radius: 15px 15px 0px 0px;
+    z-index: 6;
+    display:inline-block;
+}
+
+#tab_two a{
+    letter-spacing:1px;
+    text-transform:uppercase;
+    padding: 10px 10px;
+    color: {color:Tab Two text color};
+    border-radius: 15px  15px 1px 1px;
+    font-family: 'Permanent Marker', cursive;
+    position: inherit;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+#tab_three {
+    background-color: {color:Tab Three background color};
+    width: 16%;
+    height: 80px;
+    position: static;
+    color: #ed217c;
+    border-radius: 15px 15px 0px 0px;
+    z-index: 6;
+    display:inline-block;
+}
+
+#tab_three a{
+        letter-spacing:1px;
+    text-transform:uppercase;
+    padding: 10px 10px;
+    color: {color:Tab Two text color};
+    border-radius: 15px  15px 1px 1px;
+    font-family: 'Permanent Marker', cursive;
+    position: inherit;
+    margin-left: auto;
+    margin-right: auto;
+}
+#tab_four {
+    background-color: {color:Tab Four background color};
+    width: 16%;
+    height: 80px;
+    position: static;
+    color: #ed217c;
+    border-radius: 15px 15px 0px 0px;
+    z-index: 6;
+    display:inline-block;
+}
+
+#tab_four a{
+        letter-spacing:1px;
+    text-transform:uppercase;
+    padding: 8px 10px;
+    color: {color:Tab Two text color};
+    border-radius: 15px  15px 1px 1px;
+    font-family: 'Permanent Marker', cursive;
+    position: inherit;
+    margin-left: auto;
+    margin-right: auto;
+}
+#tab_five {
+    background-color: {color:Tab Five background color};
+    width: 16%;
+    height: 80px;
+    position: static;
+    color: #ed217c;
+    border-radius: 15px 15px 0px 0px;
+    z-index: 6;
+    display:inline-block;
+}
+
+#tab_five a{
+        letter-spacing:1px;
+    text-transform:uppercase;
+    padding: 8px 10px;
+    color: {color:Tab Two text color};
+    border-radius: 15px  15px 1px 1px;
+    font-family: 'Permanent Marker', cursive;
+    position: inherit;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#tab_six {
+    background-color: {color:Tab Six background color};
+      width: 16%;
+    height: 80px;
+    position: static;
+    color: #ed217c;
+    border-radius: 15px 15px 0px 0px;
+    z-index: 6;
+    display:inline-block;
+}
+
+#tab_six a{
+        letter-spacing:1px;
+    text-transform:uppercase;
+    padding: 8px 10px;
+    color: {color:Tab Two text color};
+    border-radius: 15px  15px 1px 1px;
+    font-family: 'Permanent Marker', cursive;
+    position: inherit;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+::-webkit-scrollbar {
+    width: 14px;
+    height: 18px;
+}
+::-webkit-scrollbar-thumb {
+    height: 6px;
+    border: 5px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    -webkit-border-radius: 10px;
+    background-color: {color:Scrollbar color};
+  
+}
+::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none;
+}
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+#posts{    
+overflow-y:auto;
+overflow-x:hidden;
+width: 315px;
+height: 565px;
+padding-top: -5px;
+margin-left:-20px;
+z-index: 4;
+
+}
+
+
+.post img {
+max-width: 94%;
+height: auto;
+margin: 10px 0px;
+padding: 8px;
+border: 1px solid #a59f99;
+background-color : #ffffff;
+}
+
+
+h2 {
+    font:10px cambria;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    line-height:10px;
+    margin-top:0;
+    padding: 5px 5px;
+    text-align: right;
+    border-bottom:1px solid {color:Line under date};
+    color: {color:Date color};
+    background-color :{color:Background color of Date};
+}
+
+h2 a{
+color: {color:Date color};
+}
+
+blockquote {
+    /* width: 200px; no width!*/
+    margin: 0px; /*this is the code*/
+background-color: {color:Quote box color};
+ padding-left: 10px;
+  padding-right: 10px;
+ padding-top: 1px;
+ padding-bottom: 1px;
+        width: 277px;
+    border-radius: 10px;
+      border-left: 1px solid {color:Date color};
+
+}
+    /* Videos!*/
+
+.media {
+  position: relative;
+  padding-bottom: 75%;
+  height: 0;
+  overflow: hidden; 
+  }
+
+.media iframe, .media object, .media embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  }
+    /*  Videos! End*/
+
+
+</style>
+
+</head>
+<body>
+       
+       
+<!-- SnapWidget: Go to https://snapwidget.com to get your own instagram widget, for the map the default shape is a square, for the size displayed in the theme modify the WIDTH to 280px in the code-->
+<div id="map">
+<iframe src="https://snapwidget.com/mp/?u=ZXN0X2Z1Z3xpbnw1MDB8MXwxfHxub3wwfG5vbmV8b25TdGFydHx5ZXN8bm8=&ve=020915" title="Instagram Widget" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:280px; height:500px"></iframe>
+</div>
+
+<!-- SnapWidget --->
+
+<div id="midori">    <!-- midori-->       
+    <div id="midori_color" class="transparent_style"><!-- midori color -->     </div><!-- midori color END-->      
+</div><!-- midori END-->      
+    <div id="container">    <!-- container-->       
+        <div id="pics">
+        
+<!-- SnapWidget: Go to https://snapwidget.com to get your own instagram widget to display the latest post, for the size displayed in the theme use the folowing specifications:
+Widget type: board
+Thumbnail: 180px
+Layout: 1 x 1
+Photoborder: no
+
+Later modify the HEIGHT to 225px in the code, so only your username will be displayed-->
+        <iframe src="https://snapwidget.com/bd/?u=ZXN0X2Z1Z3xpbnwxODB8MXwxfHxub3wwfG5vbmV8b25TdGFydHx5ZXN8bm8=&ve=020915" title="Instagram Widget" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="no" style="padding-top:8px; padding-left:8px; border:none; overflow:hidden; width:180px; height:225px"></iframe>
+<!-- SnapWidget --->
+        </div>
+
+    
+<div id="note">
+        <div id="note_shadow"></div>
+            <p>
+            
+        <span style="font-size:13px ;
+         letter-spacing: 2px;
+        ">ÚLTIMOS POSTS</span></p>
+
+<!-- RECENT POSTS -->
+ <ul id="recent-posts"></ul>
+<!-- RECENT POSTS -->
+</div>    <!-- post it END-->       
+
+<div id="pocket">
+    </div><!-- Pocket END-->   
+    <div id="card">
+        <div class="portrait">
+        <img src="{image:portrait}"></div>
+    </div><!-- card END--> 
+
+        <div id="card_info">
+        {Title}
+        <br>
+<span id="description">{Description}</span> 
+
+        </div>
+        <div id="navigation">
+<b><a href="/">home</a></b>
+<b><a href="/ask">ask</a></b>
+<b><a href="/archive">archive</a></b>            
+        </div>
+        
+<img class="clip" src="https://2.bp.blogspot.com/-u3A2YTIc2UM/VedXZiLoplI/AAAAAAAAAxE/cQzAAbhWVoE/s1600/clip-01.png"> 
+        
+<div id="counter">
+<script type="text/javascript" src="https://feedjit.com/serve/?vv=1515&amp;tft=3&amp;dd=0&amp;wid=&amp;pid=0&amp;proid=0&amp;bc=1B5E2C&amp;tc=E3CFC6&amp;brd1=1B5E2C&amp;lnk=BAAB00&amp;hc=E3CFC6&amp;hfc=1B5E2C&amp;btn=BAAB00&amp;ww=160&amp;wne=2&amp;srefs=0"></script><noscript><a href="https://feedjit.com/">Live Traffic Stats</a></noscript>
+</div>
+
+<div id="inspiration">
+
+<div class='ji-tumblr-photos'><h3><a href="https://imagenebula.tumblr.com">Inspiración</a></h3><a id='ji-tumblr-url-imagenebula-1' href=''><img border='0' style='margin:0' id='ji-tumblr-photo-imagenebula-1' src='' alt='' /></a>
+</div>
+<script type='text/javascript' src='https://imagenebula.tumblr.com/api/read/json?number=1&type=photo'></script>
+<script type='text/javascript'>
+document.getElementById('ji-tumblr-photo-imagenebula-1').setAttribute('src', tumblr_api_read.posts[0]['photo-url-250']);
+document.getElementById('ji-tumblr-url-imagenebula-1').setAttribute('href', tumblr_api_read.posts[0]['url-with-slug']);
+</script>
+
+</div>
+
+<div id="theme_credit" class="inset-text">
+
+<span style="font:10px helvetica; font-weight: 900;
+text-transform:uppercase; letter-spacing:1px;"><a href="https://est-fug.tumblr.com">Digidori Theme<br><span style="font-size:16px;">★</span> </span> 
+
+<span style="font:8px helvetica; font-weight: 900;
+text-transform:uppercase; letter-spacing:1px;"><br> by Estrella Fugaz
+    
+</a>
+    
+</span> 
+
+</div>
+    <div id="page">
+        <ol id="posts">
+        
+        
+            {block:Posts}  
+
+            
+            {block:Text}
+                    <li class="post text">
+                        {block:Title}
+                            <h2><a href="{Permalink}">{Title} - {block:Date} {MonthNumberWithZero} / {DayOfMonthWithZero} / {ShortYear} {/block:Date}</a>
+                            {/block:Title}
+
+                        </h2>
+               
+                        {Body}
+                    </li>
+                {/block:Text}
+<p>                
+                {block:Photo}
+                
+                            <h2><a href="{Permalink}">{block:Date} {MonthNumberWithZero} / {DayOfMonthWithZero} / {ShortYear} {/block:Date}</a>
+
+                        </h2>
+                        
+                    <li class="post photo">
+                        <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+
+                        {block:Caption}
+                            <div class="caption">{Caption}</div>
+                        {/block:Caption}
+                    </li>
+                {/block:Photo}
+<p>                
+                {block:Panorama}
+                    <li class="post panorama">
+                        {LinkOpenTag}
+                            <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}"/>
+                        {LinkCloseTag}{block:Caption}
+                            <div class="caption">{Caption}</div>
+                        {/block:Caption}
+                    </li>
+                {/block:Panorama}
+<p>                
+                {block:Photoset}
+                           <h2><a href="{Permalink}">{block:Date} {MonthNumberWithZero} / {DayOfMonthWithZero} / {ShortYear} {/block:Date}</a>
+
+                        </h2>
+                        <article>
+                <span class="break" style="padding-bottom: 19px;"></span>
+        
+                <!-- Go through each Photo in the Photoset -->
+                {block:Photos}
+                    <img style="width:296px;" src="{PhotoURL-HighRes}" class="highres">
+                {/block:Photos}
+        
+                {block:Caption}
+                    <p>{Caption}</p>
+                {/block:Caption}
+                <p></p>
+                <time>{TimeAgo}</time>
+            </article>
+                                {/block:Photoset}
+
+
+<p>                
+                
+                {block:Quote}
+                  <h2><a href="{Permalink}">{block:Date} {MonthNumberWithZero} / {DayOfMonthWithZero} / {ShortYear} {/block:Date}</a>
+
+                        </h2>
+                    <li class="post quote">
+                        "{Quote}"
+
+                        {block:Source}
+                            <div class="source">{Source}</div>
+                        {/block:Source}
+                    </li>
+                {/block:Quote}
+<p>                
+                
+                {block:Link}
+                  <h2><a href="{Permalink}">{block:Date} {MonthNumberWithZero} / {DayOfMonthWithZero} / {ShortYear} {/block:Date}</a>
+
+                        </h2>
+                    <li class="post link">
+                        <a href="{URL}" class="link" {Target}>{Name}</a>
+
+                        {block:Description}
+                            <div class="description">{Description}</div>
+                        {/block:Description}
+                    </li>
+                {/block:Link}
+<p>                
+                
+                {block:Chat}
+                  <h2><a href="{Permalink}">{block:Date} {MonthNumberWithZero} / {DayOfMonthWithZero} / {ShortYear} {/block:Date}</a>
+
+                        </h2>
+                    <li class="post chat">
+                        {block:Title}
+                            <h2><a href="{Permalink}">{Title}</a></h2>
+                        {/block:Title}
+
+                        <ul class="chat">
+                            {block:Lines}
+                                <li class="{Alt} user_{UserNumber}">
+                                    {block:Label}
+                                        <span class="label">{Label}</span>
+                                    {/block:Label}{Line}
+                                </li>
+                            {/block:Lines}
+                        </ul>
+                    </li>
+                {/block:Chat}
+<p>                
+                
+                {block:Video}
+                  <h2><a href="{Permalink}">{block:Date} {MonthNumberWithZero} / {DayOfMonthWithZero} / {ShortYear} {/block:Date}</a>
+
+                        </h2>
+                    <li class="media">
+                        {Video-500}{block:Caption}
+                            <div class="caption">{Caption}</div>
+                        {/block:Caption}
+                    </li>
+                {/block:Video}
+<p>                
+                
+                {block:Audio}
+                  <h2><a href="{Permalink}">{block:Date} {MonthNumberWithZero} / {DayOfMonthWithZero} / {ShortYear} {/block:Date}</a>
+
+                        </h2>
+                    <li class="post audio">
+                        {AudioEmbed}{block:Caption}
+                            <div class="caption">{Caption}</div>
+                        {/block:Caption}
+                    </li>
+                {/block:Audio}
+                
+                {/block:Posts}
+                
+                <p id="footer">
+            {block:PreviousPage}
+                <a href="{PreviousPage}">&#171; Previous</a>
+            {/block:PreviousPage}{block:NextPage}
+                <a href="{NextPage}">Next &#187;</a>
+            {/block:NextPage}
+        </p>
+        </ol>
+
+        
+
+ </div><!-- page END-->  
+ 
+<div id="pages_link">
+    {block:IfCustomLinkOne}  
+    <div id="tab_one" class="tab">
+     <a  href="{block:IfCustomLinkOneURL}{text:Custom Link One URL}{/block:IfCustomLinkOneURL}"> {text:Custom Link One}</a>
+    </div>  {/block:IfCustomLinkOne}
+    
+    {block:IfCustomLinkTwo}
+    <div id="tab_two" class="tab">
+    <a href="{block:IfCustomLinkTwoURL}{text:Custom Link Two URL}{/block:IfCustomLinkTwoURL}"> {text:Custom Link Two}</a>
+    </div> {/block:IfCustomLinkTwo}
+    
+    {block:IfCustomLinkThree}
+    <div id="tab_three" class="tab">
+    <a href="{block:IfCustomLinkThreeURL}{text:Custom Link Three URL}{/block:IfCustomLinkThreeURL}"> {text:Custom Link Three}</a>
+    </div>  
+    {/block:IfCustomLinkThree}
+     
+     
+    {block:IfCustomLinkFour}
+    <div id="tab_four" class="tab">
+    <a href="{block:IfCustomLinkFourURL}{text:Custom Link Four URL}{/block:IfCustomLinkFourURL}"> {text:Custom Link Four}</a></div>  {/block:IfCustomLinkFour}
+    
+    {block:IfCustomLinkFive}
+    <div id="tab_five" class="tab">
+    <a href="{block:IfCustomLinkFiveURL}{text:Custom Link Five URL}{/block:IfCustomLinkFiveURL}"> {text:Custom Link Five}</a></div>  {/block:IfCustomLinkFive}
+    
+    {block:IfCustomLinkSix}
+    <div id="tab_six" class="tab">
+    <a href="{block:IfCustomLinkSixURL}{text:Custom Link Six URL}{/block:IfCustomLinkSixURL}"> {text:Custom Link Six}</a></div>  
+    {/block:IfCustomLinkSix}
+</div>
+
+            </div>    <!-- container-->    
+    </body>
+</html>
